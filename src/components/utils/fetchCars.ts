@@ -18,8 +18,10 @@ type FilterType = {
   year?: string;
 };
 
-export async function fetchCars(): Promise<CarType[]> {
-  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=m3`;
+export async function fetchCars(paramsObj: FilterType): Promise<CarType[]> {
+  const { limit = "5" } = paramsObj;
+
+  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=m5&limit=${limit}`;
 
   const response = await fetch(url, options);
 

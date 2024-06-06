@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 // buton bileşeninin aldığı propların tipi
 export type ButtonProps = {
   title: string;
@@ -5,6 +7,7 @@ export type ButtonProps = {
   type?: "submit" | "reset" | "button";
   icon?: string;
   disabled?: boolean;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 // api'dan gelen araba verisi
