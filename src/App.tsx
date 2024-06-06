@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Header from "./components/Header";
+import MainPage from "./pages/MainPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
   const [state, setState] = useState<number>(1);
 
   return (
-    <div>
-      <h1>Merhaba</h1>
-      <p>{state}</p>
-      <button
-        onClick={() => {
-          setState(state + 1);
-        }}
-      >
-        Arttır
-      </button>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+      <h1>Selam</h1>
+    </BrowserRouter>
   );
 };
 
