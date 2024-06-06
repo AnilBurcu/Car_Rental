@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import Filter from "../../components/Filter/index.tsx";
 import Hero from "../../components/Hero/index.tsx";
 import SearchBar from "../../components/SearchBar/index.tsx";
-
 import { CarType } from "../../types.ts";
 import Card from "../../components/Card/index.tsx";
 import { useSearchParams } from "react-router-dom";
 import { fetchCars } from "../../components/utils/fetchCars.ts";
+import ShowMore from "../../components/ShowMore/index.tsx";
 
 const MainPage = () => {
   const [cars, setCars] = useState<CarType[] | null>(null);
@@ -72,6 +72,7 @@ const MainPage = () => {
                 <Card key={i} car={car} />
               ))}
             </div>
+            <ShowMore />
           </section>
         )}
       </div>

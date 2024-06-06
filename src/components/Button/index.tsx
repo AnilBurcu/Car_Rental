@@ -16,7 +16,8 @@ const Button = ({
       className={`${designs} custom-btn bg-primary-blue rounded-full hover:bg-blue-800 text-white`}
     >
       <span className="flex-1">{title}</span>
-      <img className="relative w-6 h-6" src={icon} />
+
+      {icon && <img className="relative w-6 h-6" src={icon} />}
     </button>
   );
 };
