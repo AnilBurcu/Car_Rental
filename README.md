@@ -6,3 +6,5 @@
 - react-select
 - tailwind
 - framer-motion
+
+* Group hover on Card
