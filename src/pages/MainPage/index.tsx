@@ -7,6 +7,7 @@ import Card from "../../components/Card/index.tsx";
 import { useSearchParams } from "react-router-dom";
 import { fetchCars } from "../../components/utils/fetchCars.ts";
 import ShowMore from "../../components/ShowMore/index.tsx";
+import { fuels, years } from "../../constants.ts";
 
 const MainPage = () => {
   const [cars, setCars] = useState<CarType[] | null>(null);
@@ -41,8 +42,8 @@ const MainPage = () => {
           <SearchBar />
 
           <div className="home__filter-container">
-            <Filter />
-            <Filter />
+            <Filter paramName="fuel_type" data={fuels} />
+            <Filter paramName="year" data={years} />
           </div>
         </div>
         {/*

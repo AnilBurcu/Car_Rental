@@ -33,6 +33,10 @@ const SearchBar = () => {
     e.preventDefault();
     setParams({ make, model });
   };
+  const selectedMake = {
+    label: params.get("make") || "",
+    value: params.get("make") || "",
+  };
 
   return (
     <form onSubmit={handleSubmit} className="searchbar gap-3">
@@ -41,6 +45,7 @@ const SearchBar = () => {
           onChange={(e) => e && setMake(e?.value)}
           className="w-full text-black"
           options={options}
+          defaultValue={selectedMake}
         />
         <Button designs="sm:hidden" />
       </div>
@@ -51,6 +56,7 @@ const SearchBar = () => {
           className="searchbar__input rounded text-black"
           placeholder="örn: Civic"
           type="text"
+          defaultValue={params.get("model") || ""}
         />
         <Button designs="sm:hidden" />
       </div>
