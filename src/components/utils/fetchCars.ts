@@ -19,9 +19,9 @@ type FilterType = {
 };
 
 export async function fetchCars(paramsObj: FilterType): Promise<CarType[]> {
-  const { limit = "5" } = paramsObj;
+  const { limit = "5", make = "bmw", model = "m5" } = paramsObj;
 
-  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=m5&limit=${limit}`;
+  const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=m5&limit=${limit}&make=${make}&model=${model}`;
 
   const response = await fetch(url, options);
 

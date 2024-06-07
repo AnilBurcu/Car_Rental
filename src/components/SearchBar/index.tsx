@@ -1,7 +1,8 @@
 import Select from "react-select";
 import { makes } from "../../constants";
 import { OptionType } from "../../types";
-import { useMemo, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Button = ({ designs }: { designs?: string }) => {
   return (
@@ -12,8 +13,12 @@ const Button = ({ designs }: { designs?: string }) => {
 };
 
 const SearchBar = () => {
+  const [params, setParams] = useSearchParams();
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
+
+  // markalar dizisindeki elemanları react-select'in istediği veri formatına getir
+  // her render sırasında tekrar hesaplamayı önlemek için useMemo kullan
   const options: OptionType[] = useMemo(
     () =>
       makes.map((make) => ({
@@ -23,8 +28,14 @@ const SearchBar = () => {
     []
   );
 
+  // form gönderilince seçilen marka ve modeli url'e parametre olarak ekle
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setParams({ make, model });
+  };
+
   return (
-    <form className="searchbar gap-3">
+    <form onSubmit={handleSubmit} className="searchbar gap-3">
       <div className="searchbar__item">
         <Select
           onChange={(e) => e && setMake(e?.value)}
